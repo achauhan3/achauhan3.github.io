@@ -1,1 +1,53 @@
-theme: jekyll-theme-leap-day
+title: "Abhishek Chauhan"
+name: "Abhishek Chauhan"
+description: "Automation Test Engineer | Aspiring Test Automation Architect"
+url: "https://<YOUR_USERNAME>.github.io"
+baseurl: ""
+
+# Use Minimal Mistakes via remote_theme
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+
+# Plugins allowed on GitHub Pages
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Search (lunr.js built-in)
+search: true
+
+# Author profile (optional)
+author:
+  name: "Abhishek Chauhan"
+  avatar: "/assets/img/avatar.png"
+  bio: "Automation Test Engineer | Aspiring Test Automation Architect"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/<YOUR_USERNAME>"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/<YOUR_LINKEDIN_SLUG>/"
+
+# Analytics (optional) — replace with your actual ID or remove this block
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-XXXXXXXXXX"
+    anonymize_ip: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
+      author_profile: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "single"
+      author_profile: true

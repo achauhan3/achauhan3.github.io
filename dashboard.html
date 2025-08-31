@@ -1,0 +1,82 @@
+---
+layout: single
+title: "YouTube Dashboard"
+permalink: /dashboard/
+---
+
+<h1>📊 My YouTube Posting Dashboard</h1>
+<p>This dashboard lists your latest YouTube uploads and charts how often you posted per day.</p>
+
+<div id="video-list"></div>
+<canvas id="postChart" width="400" height="200" style="max-width: 800px;"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const apiKey = "YOUR_YOUTUBE_API_KEY";  // 🔑 Replace with your API key
+const channelId = "YOUR_CHANNEL_ID";    // 🎥 Replace with your Channel ID
+const maxResults = 30;
+const CACHE_KEY = "youtubeData";
+const CACHE_TIME_KEY = "youtubeCacheTime";
+const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
+
+function renderDashboard(data) {
+  const container = document.getElementById("video-list");
+  const dates = {};
+
+  container.innerHTML = "";
+
+  (data.items || []).forEach(item => {
+    if (item.id && item.id.kind === "youtube#video") {
+      const videoId = item.id.videoId;
+      const title = item.snippet.title;
+      const date = item.snippet.publishedAt.split("T")[0];
+      dates[date] = (dates[date] || 0) + 1;
+
+      const div = document.createElement("div");
+      div.style.marginBottom = "1rem";
+      div.innerHTML = `
+        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/${videoId}/0.jpg" width="240" loading="lazy"/><br>
+          ${title}
+        </a><br><small>Posted on: ${date}</small>
+      `;
+      container.appendChild(div);
+    }
+  });
+
+  const labels = Object.keys(dates).sort();
+  const values = labels.map(d => dates[d]);
+
+  new Chart(document.getElementById('postChart'), {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Videos per Day',
+        data: values
+      }]
+    }
+  });
+}
+
+(async function init() {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    const t = +localStorage.getItem(CACHE_TIME_KEY) || 0;
+    if (cached && (Date.now() - t) < CACHE_TTL_MS) {
+      renderDashboard(JSON.parse(cached));
+      return;
+    }
+    const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
+    renderDashboard(data);
+  } catch (e) {
+    const container = document.getElementById("video-list");
+    container.innerHTML = "<p>Could not load data. Check your API key and Channel ID.</p>";
+    console.error(e);
+  }
+})();
+</script>
