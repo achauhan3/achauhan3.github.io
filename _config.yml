@@ -34,7 +34,7 @@ author:
 analytics:
   provider: "google-gtag"
   google:
-    tracking_id: "G-XXXXXXXXXX"
+    tracking_id: "G-0LSCT1NZ03"
     anonymize_ip: true
 
 # Defaults
