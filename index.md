@@ -13,7 +13,7 @@ author_profile: true
 
 <script>
 // Simple visitor counter using countapi (can be removed if you add Google Analytics instead)
-fetch('https://api.countapi.xyz/hit/<YOUR_USERNAME>.github.io/visits')
+fetch('https://api.countapi.xyz/hit/achauhan3.github.io/visits')
   .then(res => res.json())
   .then(res => { document.getElementById('visitors').innerText = res.value; });
 </script>
