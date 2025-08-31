@@ -1,0 +1,15 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "About"
+    url: /about/
+  - title: "Projects"
+    url: /projects/
+  - title: "Blog"
+    url: /blog/
+  - title: "Social Media"
+    url: /social/
+  - title: "Dashboard"
+    url: /dashboard/
+  - title: "Contact"
+    url: /contact/
