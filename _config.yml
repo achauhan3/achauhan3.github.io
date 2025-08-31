@@ -1,7 +1,7 @@
 title: "Abhishek Chauhan"
 name: "Abhishek Chauhan"
 description: "Automation Test Engineer | Aspiring Test Automation Architect"
-url: "https://<YOUR_USERNAME>.github.io"
+url: "https://achauhan3.github.io"
 baseurl: ""
 
 # Use Minimal Mistakes via remote_theme
@@ -25,10 +25,10 @@ author:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/<YOUR_USERNAME>"
+      url: "https://github.com/achauhan3"
     - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/<YOUR_LINKEDIN_SLUG>/"
+      # icon: "fab fa-fw fa-linkedin"
+      # url: "https://www.linkedin.com/in/<YOUR_LINKEDIN_SLUG>/"
 
 # Analytics (optional) — replace with your actual ID or remove this block
 analytics:
