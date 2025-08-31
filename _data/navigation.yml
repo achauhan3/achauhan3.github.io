@@ -9,7 +9,7 @@ main:
     url: /blog/
   - title: "Social Media"
     url: /social/
-  - title: "Dashboard"
-    url: /dashboard/
+  # - title: "Dashboard"
+  #   url: /dashboard/
   - title: "Contact"
     url: /contact/
